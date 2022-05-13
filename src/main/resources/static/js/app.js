@@ -5,10 +5,8 @@ async function mostrarRestaurantes(){
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        console.log(data.length);
 
         for (let i = 0; i<data.length; i++){
-            console.log(i);
             var div1 = document.createElement('div');
             div1.className = "col mb-5";
             main_div.appendChild(div1);

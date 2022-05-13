@@ -11,5 +11,5 @@ mesa.onkeyup = () => {
 
 btn.onclick = () => {
     localStorage.setItem('mesa',mesa.value);
-    window.location.href='index.html';
+    window.location.href='menu.html';
 }
