@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table("RESTPLATOS")
+@Table("REST_PLATOS")
 public class RestPlatosTable {
     private @Column("RESTAURANTE_ID") @Id Long id_rest;
     private @Column("PLATO_ID") @Id Long id_plato;

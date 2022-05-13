@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table("PEDIDOPLATO")
+@Table("PEDIDO_PLATO")
 public class PlatoPedidoTable {
     private @Column("PEDIDO_ID") @Id Long id_pedido;
     private @Column("PLATO_ID") @Id Long id_plato;
