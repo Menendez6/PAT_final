@@ -49,9 +49,13 @@ async function mostrarRestaurantes(){
 
             var boton = document.createElement("a");
             boton.className = "btn btn-outline-dark mt-auto";
-            boton.href = "#";
-            boton.innerHTML = "Ir al restaurante";
+            boton.href = "mesa.html";
+            boton.innerHTML = "Pedir";
             div_button.appendChild(boton);
+
+            boton.addEventListener("click",function(event){
+                localStorage.setItem('restaurante',data[i].id);
+            })
 
 
         }
