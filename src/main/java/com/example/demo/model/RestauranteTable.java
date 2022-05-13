@@ -14,6 +14,20 @@ import lombok.NoArgsConstructor;
 @Table("RESTAURANTES")
 public class RestauranteTable {
     private @Column("RESTAURANTE_ID") @Id Long id;
-    private @Column("NOMBRE") String mesa;
+    private @Column("NOMBRE") String restName;
     private @Column("DIRECCION") String direccion;
+    private @Column("FOTO") String foto;
+
+    public Long getId() {
+        return id;
+    }
+    public String getRestName() {
+        return restName;
+    }
+    public String getDireccion() {
+        return direccion;
+    }
+    public String getFoto() {
+        return foto;
+    } 
 }
