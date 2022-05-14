@@ -10,6 +10,7 @@ mesa.onkeyup = () => {
 }
 
 btn.onclick = () => {
+    localStorage.setItem('carro',0);
     localStorage.setItem('mesa',mesa.value);
     window.location.href='menu.html';
 }
