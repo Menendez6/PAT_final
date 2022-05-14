@@ -2,7 +2,9 @@ package com.example.demo.service.impl;
 
 import java.util.List;
 import java.util.stream.StreamSupport;
+import java.util.Optional;
 
+import com.example.demo.model.RestauranteTable;
 import com.example.demo.repository.RestauranteRepository;
 import com.example.demo.service.RestService;
 import com.example.demo.service.dto.RestDTO;
@@ -30,6 +32,17 @@ public class RestServiceImpl implements RestService {
                 obj.getDireccion(),
                 obj.getFoto()))
             .toList();
+    }
+
+
+    @Override
+    public RestDTO getRestById(Long id) {
+
+        Optional<RestauranteTable> orestaurant = restRepo.findById(id);
+        RestauranteTable table = orestaurant.get();
+        RestDTO restaurant = new RestDTO(table.getId(),table.getRestName(),table.getDireccion(),table.getFoto());
+
+        return restaurant;
     }
     
 }

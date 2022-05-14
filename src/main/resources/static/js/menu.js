@@ -2,17 +2,27 @@ primeros = document.getElementById("primeros");
 segundos = document.getElementById("segundos");
 postres = document.getElementById("postres");
 carro = document.getElementById('carro');
+nombre_rest = document.getElementById('nombre_rest');
+direccion = document.getElementById('direc_rest');
+const restaurante = localStorage.getItem('restaurante');
 
+
+async function mostrarRestaurante(){
+	url ="api/restaurants/"+restaurante;
+	fetch(url)
+	.then(response => response.json())
+	.then(data =>{
+		nombre_rest.innerHTML = data.restName;
+		direccion.innerHTML = data.direccion;
+	})
+}
 async function mostrarPlatos(){
 	//carro.innerHTML = localStorage.getItem('carro');
 	localStorage.setItem('carro',0);
-	var restaurante = localStorage.getItem('restaurante');
 	url = "/api/platos/"+restaurante;
 	fetch(url)
     .then(response => response.json())
 	.then(data => {
-		console.log(data);
-		console.log(primeros);
 
 		for (let i = 0; i<data.length; i++){
 			var code = '<div class="col">' +
@@ -83,4 +93,7 @@ async function mostrarPlatos(){
 	})
 }
 
-document.addEventListener('DOMContentLoaded',mostrarPlatos());
+document.addEventListener('DOMContentLoaded', function(event){
+	mostrarRestaurante();
+	mostrarPlatos();
+});
