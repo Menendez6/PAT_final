@@ -8,6 +8,7 @@ import com.example.demo.service.dto.RestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +25,12 @@ public class RestaurantController {
         var restaurants = restService.getRestaurants();
         
         return ResponseEntity.ok().body(restaurants);
+    }
+
+    @GetMapping("/restaurants/{id}")
+    public ResponseEntity<RestDTO> getRestaurantById(@PathVariable("id") Long id){
+        var restaurant = restService.getRestById(id);
+        return ResponseEntity.ok().body(restaurant);
     }
     
 }

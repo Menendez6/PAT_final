@@ -10,5 +10,7 @@ import org.springframework.stereotype.Service;
 public interface RestService {
 
     List<RestDTO> getRestaurants();
+
+    RestDTO getRestById(Long id);
     
 }
