@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.example.demo.repository.PlatoRepository;
@@ -36,8 +37,18 @@ public class PlatoServiceImpl implements PlatoService {
     }
 
     @Override
-    public void deletePlatos(Long id) {
+    public void deletePlato(Long id) {
         jdbcTemplate.execute("DELETE FROM PLATOS WHERE PLATO_ID='"+id+"'");
     }
-    
+
+    @Override
+    public void updatePlato(PlatoDTO plato) {
+        Long id = plato.id_plato();
+        String name = plato.nombre();
+        BigDecimal precio = plato.precio();
+        String foto = plato.foto();
+        String descripcion = plato.descripcion();
+        String seccion = plato.seccion();
+        jdbcTemplate.execute("UPDATE PLATOS SET NOMBRE ='"+name+"',PRECIO="+precio+",FOTO='"+foto+"',DESCRIPCION='"+descripcion+"',SECCION='"+seccion+"' WHERE PLATO_ID="+id);
+    }
 }

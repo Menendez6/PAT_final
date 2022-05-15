@@ -25,11 +25,19 @@ public class PlatoController {
     }
 
     @DeleteMapping("/platos/{id}")
-    public @ResponseBody ResponseEntity<String> deletePlatos(@PathVariable("id") Long id){
+    public @ResponseBody ResponseEntity<String> deletePlato(@PathVariable("id") Long id){
 
-       platoService.deletePlatos(id);
+       platoService.deletePlato(id);
 
        return ResponseEntity.ok().body("plato eliminado");
     }
-    
+
+    @PostMapping("/platos/update/{id}")
+    public @ResponseBody ResponseEntity<String> updatePlato(@RequestBody PlatoDTO plato){
+        platoService.updatePlato(plato);
+
+        return ResponseEntity.ok().body("Plato actualizado");
+
+    }
+
 }

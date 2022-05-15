@@ -1,6 +1,5 @@
-const main_div = document.getElementById("main_div");
 let restaurante = 0;
-let id = 0;
+let plato = 0;
 
 async function mostrarRestaurantes(){
     fetch("/api/restaurants")
@@ -24,11 +23,13 @@ async function mostrarRestaurantes(){
             var boton = document.createElement("a");
             boton.className = "btn btn-outline-dark mt-auto py-1 px-4";
             boton.id = data[i].id;
-            boton.onclick = "restaurante="+data[i].id;
+            //boton.onclick = "selectRestaurante("+data[i].id+")";
             boton.innerHTML = "Ver";
 
             boton.addEventListener("click",function(event){
+                selectRestaurante(boton.id);
                 mostrarPlatos();
+
             })
 
             document.getElementById('boton').appendChild(boton);
@@ -51,74 +52,94 @@ function mostrarPlatos() {
           document.getElementById('data_platos').innerHTML = temp2; //vaciamos las rows previas
           for (var i = 0; i < data_p.length; i++) { // rellenamos fila por fila
             var imagen = data_p[i].foto;
-            switch(data_p[i].seccion) {
-                case 1:
-                var seccion = 'Primero';
+            let seccion = data_p[i].seccion;
+            switch(seccion) {
+                case "1":
+                seccion = 'Primero';
+                break;
 
-                case 2:
-                var seccion = 'Segundo';
+                case "2":
+                seccion = 'Segundo';
+                break;
 
-                case 3:
-                var seccion = 'Postre';
+                case "3":
+                seccion = 'Postre';
+                break;
             }
-            temp2 += '<tr>';
-            temp2 += '<td><img src="'+ imagen +'" height="120px" width="auto"></td>';
-            temp2 += '<td>' + data_p[i].id_plato + '</td>';
-            temp2 += '<td>' + data_p[i].nombre + '</td>';
-            temp2 += '<td>' + data_p[i].descripcion + '</td>';
-            temp2 += '<td>' + seccion + '</td>';
-            temp2 += '<td>' + data_p[i].precio + '</td>';
-            temp += '<td class="text-center" id="botonModify"></td>';
-            temp += '<td class="text-center" id="botonDelete"></td></tr>';
-            temp2 += '<button class="btn btn-danger btn-outline-dark mt-auto py-1 px-3" id="delete-' + data_p[i].id_plato +'">Eliminar</button></td></tr>';
+            temp2 = '<tr>';
+            temp2 += '<td><img src="'+ imagen +'" id="foto-'+data_p[i].id_plato+'" height="120px" width="auto"></td>';
+            temp2 += '<td id="id-'+data_p[i].id_plato+'">' + data_p[i].id_plato + '</td>';
+            temp2 += '<td id="nombre-'+data_p[i].id_plato+'">' + data_p[i].nombre + '</td>';
+            temp2 += '<td id="desc-'+data_p[i].id_plato+'">' + data_p[i].descripcion + '</td>';
+            temp2 += '<td id="seccion-'+data_p[i].id_plato+'">' + seccion + '</td>';
+            temp2 += '<td id="precio-'+data_p[i].id_plato+'">' + data_p[i].precio + '</td>';
+            temp2 += '<td class="text-center" id="botonModify'+i+'"></td></tr>';
+
+            document.getElementById('data_platos').innerHTML += temp2;
 
             var botonModify = document.createElement("a");
             botonModify.className = "btn btn-outline-dark mt-auto py-1 px-3";
-            botonModify.id = data_p[i].id_plato;
-            botonModify.onclick = "id="+data_p[i].id_plato;
+            botonModify.id = 'modify'+i;
+            //botonModify.onclick = "selectPlato("+data_p[i].id_plato+")";
             botonModify.innerHTML = "Modificar";
 
-            botonModify.addEventListener("click",function(event){
-                location.reload();
+            document.getElementById('botonModify'+i).appendChild(botonModify);
+
+            document.getElementById('modify'+i).addEventListener("click",function(event){
+                id_plato = document.getElementById('modify'+i).id.substring(6);
+                localStorage.setItem('id_plato',document.getElementById('id-'+id_plato).innerHTML);
+                localStorage.setItem('nombre_plato',document.getElementById('nombre-'+id_plato).innerHTML);
+                localStorage.setItem('foto_plato',document.getElementById('foto-'+id_plato).src);
+                localStorage.setItem('desc_plato',document.getElementById('desc-'+id_plato).innerHTML);
+                localStorage.setItem('seccion_plato',document.getElementById('seccion-'+id_plato).innerHTML);
+                localStorage.setItem('precio_plato',document.getElementById('precio-'+id_plato).innerHTML);
+                location.href = "mod_plato.html";
             })
 
-            document.getElementById('botonModify').appendChild(botonModify);
-
             var botonDelete = document.createElement("a");
-            botonDelete.className = "btn btn-outline-dark mt-auto py-1 px-3";
-            botonDelete.id = data_p[i].id_plato;
-            botonDelete.onclick = "id="+data_p[i].id_plato;
+            botonDelete.className = "btn btn-danger btn-outline-dark mt-auto py-1 px-3";
+            botonDelete.id = 'delete-'+data_p[i].id_plato;
+            //botonDelete.onclick = "selectPlato("+data_p[i].id_plato+")";
             botonDelete.innerHTML = "Eliminar";
 
             botonDelete.addEventListener("click",function(event){
+                selectPlato(botonDelete.id.substring(7));
                 console.log("dentro");
                 borrarPlato();
             })
 
-            document.getElementById('botonDelete').appendChild(botonDelete);
-        }
-         document.getElementById('data_platos').innerHTML = temp2; // metemos las filas ya modificadas
-
+            document.getElementById('botonModify'+i).appendChild(botonDelete);
+          }
         }
     })
 }
 
 
 async function borrarPlato(){
-    let request = await fetch("/api/platos/"+id,{
+    let request = await fetch("/api/platos/"+plato,{
         method: "DELETE",
         credentials: "same-origin",
         headers: {
             "Content-type": "application/json"
         },
-        body: name,
+        body: plato,
         datatype: "json",
     }).catch(console.error);
 
     if (request.ok){
-        console.log(await request.json());
+        console.log(plato+" borrado");
         location.reload();
     }
 }
 
-document.addEventListener('DOMContentLoaded',mostrarRestaurantes())
+function selectRestaurante(id_restaurante) {
+    restaurante = id_restaurante;
+    return;
+}
+
+function selectPlato(id_plato) {
+    plato = id_plato;
+    return;
+}
+
+document.addEventListener('DOMContentLoaded',mostrarRestaurantes());

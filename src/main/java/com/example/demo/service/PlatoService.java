@@ -10,5 +10,6 @@ import org.springframework.stereotype.Service;
 public interface PlatoService {
     
     List<PlatoDTO> getPlatos(Long id_rest);
-    void deletePlatos(Long id);
+    void deletePlato(Long id);
+    void updatePlato(PlatoDTO plato);
 }
