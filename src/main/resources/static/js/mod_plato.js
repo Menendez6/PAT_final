@@ -61,8 +61,8 @@ async function mandarInfo(){
     }).catch(console.error);
 
     if (request.ok){
+    	console.log(await request.json());
         location.href = "admin_menu.html";
-        console.log(await request.json());
     }
 }
 

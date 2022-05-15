@@ -73,32 +73,32 @@ function mostrarPlatos() {
             temp2 += '<td id="desc-'+data_p[i].id_plato+'">' + data_p[i].descripcion + '</td>';
             temp2 += '<td id="seccion-'+data_p[i].id_plato+'">' + seccion + '</td>';
             temp2 += '<td id="precio-'+data_p[i].id_plato+'">' + data_p[i].precio + '</td>';
-            temp2 += '<td class="text-center" id="botonModify'+i+'"></td></tr>';
+            temp2 += '<td class="text-center" id="botones'+data_p[i].id_plato+'"></td></tr>';
 
             document.getElementById('data_platos').innerHTML += temp2;
 
             var botonModify = document.createElement("a");
             botonModify.className = "btn btn-outline-dark mt-auto py-1 px-3";
-            botonModify.id = 'modify'+i;
+            botonModify.id = 'modify'+data_p[i].id_plato;
             //botonModify.onclick = "selectPlato("+data_p[i].id_plato+")";
             botonModify.innerHTML = "Modificar";
 
-            document.getElementById('botonModify'+i).appendChild(botonModify);
+            document.getElementById('botones'+data_p[i].id_plato).appendChild(botonModify);
 
-            document.getElementById('modify'+i).addEventListener("click",function(event){
-                id_plato = document.getElementById('modify'+i).id.substring(6);
-                localStorage.setItem('id_plato',document.getElementById('id-'+id_plato).innerHTML);
-                localStorage.setItem('nombre_plato',document.getElementById('nombre-'+id_plato).innerHTML);
-                localStorage.setItem('foto_plato',document.getElementById('foto-'+id_plato).src);
-                localStorage.setItem('desc_plato',document.getElementById('desc-'+id_plato).innerHTML);
-                localStorage.setItem('seccion_plato',document.getElementById('seccion-'+id_plato).innerHTML);
-                localStorage.setItem('precio_plato',document.getElementById('precio-'+id_plato).innerHTML);
+            document.getElementById('modify'+data_p[i].id_plato).addEventListener("click",function(event){
+                selectPlato(document.getElementById('modify'+data_p[i].id_plato).id.substring(6));
+                localStorage.setItem('id_plato',document.getElementById('id-'+plato).innerHTML);
+                localStorage.setItem('nombre_plato',document.getElementById('nombre-'+plato).innerHTML);
+                localStorage.setItem('foto_plato',document.getElementById('foto-'+plato).src);
+                localStorage.setItem('desc_plato',document.getElementById('desc-'+plato).innerHTML);
+                localStorage.setItem('seccion_plato',document.getElementById('seccion-'+plato).innerHTML);
+                localStorage.setItem('precio_plato',document.getElementById('precio-'+plato).innerHTML);
                 location.href = "mod_plato.html";
             })
 
             var botonDelete = document.createElement("a");
             botonDelete.className = "btn btn-danger btn-outline-dark mt-auto py-1 px-3";
-            botonDelete.id = 'delete-'+data_p[i].id_plato;
+            botonDelete.id = 'delete'+data_p[i].id_plato;
             //botonDelete.onclick = "selectPlato("+data_p[i].id_plato+")";
             botonDelete.innerHTML = "Eliminar";
 
@@ -108,7 +108,7 @@ function mostrarPlatos() {
                 borrarPlato();
             })
 
-            document.getElementById('botonModify'+i).appendChild(botonDelete);
+            document.getElementById('botones'+data_p[i].id_plato).appendChild(botonDelete);
           }
         }
     })
