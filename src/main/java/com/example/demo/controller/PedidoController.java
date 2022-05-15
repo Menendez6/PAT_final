@@ -5,8 +5,10 @@ import java.util.List;
 import com.example.demo.service.PedidoService;
 import com.example.demo.service.dto.IdDTO;
 import com.example.demo.service.dto.PedidoDTO;
+import com.example.demo.service.dto.PedidoDTO2;
 import com.example.demo.service.dto.PlatoPedidoDTO;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,6 +56,14 @@ public class PedidoController {
         List<PlatoPedidoDTO> platos = pedidoService.getPlatosPedidos();
         
         return ResponseEntity.ok().body(platos);
+    }
+
+    @GetMapping("/getPedido/{id}")
+    public ResponseEntity<PedidoDTO2> getPedido(@PathVariable("id") Long id){
+        
+        var pedido = pedidoService.getPedidoById(id);
+        
+        return ResponseEntity.ok().body(pedido);
     }
 
     

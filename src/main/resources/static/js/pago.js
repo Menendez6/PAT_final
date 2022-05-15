@@ -93,13 +93,14 @@ async function getId(){
     .then(response => response.json())
 	.then(data => {
         id_pedido=data.id;
-        for(let item in pedido){
-            addPlatos(id_pedido,item);
-        }
 
     })
-
-    //await delay(1);
+    await delay(1);
+    for(let item in pedido){
+        addPlatos(id_pedido,item);
+    }
+    localStorage.setItem('id_pedido',id_pedido);
+    await delay(1);
     window.location.href='confirmado.html';
 }
 
