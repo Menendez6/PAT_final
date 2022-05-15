@@ -1,45 +1,7 @@
-let restaurante = 0;
 let plato = 0;
 
-async function mostrarRestaurantes(){
-    fetch("/api/restaurants")
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        console.log(data.length);
-
-        if (data.length > 0) {
-          var temp = '';
-          document.getElementById('data_res').innerHTML = temp; //vaciamos las rows previas
-          for (var i = 0; i < data.length; i++) { // rellenamos fila por fila
-            temp += '<tr>';
-            temp += '<td>' + data[i].id + '</td>';
-            temp += '<td>' + data[i].restName + '</td>';
-            temp += '<td>' + data[i].direccion + '</td>';
-            temp += '<td class="text-center" id="boton"></td></tr>';
-
-            document.getElementById('data_res').innerHTML += temp; // metemos las filas ya modificadas
-
-            var boton = document.createElement("a");
-            boton.className = "btn btn-outline-dark mt-auto py-1 px-4";
-            boton.id = data[i].id;
-            //boton.onclick = "selectRestaurante("+data[i].id+")";
-            boton.innerHTML = "Ver";
-
-            boton.addEventListener("click",function(event){
-                selectRestaurante(boton.id);
-                mostrarPlatos();
-
-            })
-
-            document.getElementById('boton').appendChild(boton);
-            }
-        }
-    })
-}
-
 function mostrarPlatos() {
-    url = "/api/platos/"+localStorage.getItem('restaurante');
+    url = "/api/platos/"+localStorage.getItem('restaurante_admin');
     fetch(url)
     .then(response => response.json())
     .then(data_p => {
@@ -132,14 +94,10 @@ async function borrarPlato(){
     }
 }
 
-function selectRestaurante(id_restaurante) {
-    restaurante = id_restaurante;
-    return;
-}
 
 function selectPlato(id_plato) {
     plato = id_plato;
     return;
 }
 
-document.addEventListener('DOMContentLoaded',mostrarRestaurantes());
+document.addEventListener('DOMContentLoaded',mostrarPlatos());

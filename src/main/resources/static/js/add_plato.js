@@ -4,14 +4,32 @@ const desc = document.getElementById('desc');
 const seccion = document.getElementById('seccion');
 const precio = document.getElementById('precio');
 const error = document.getElementById('error');
-var id_plato = localStorage.getItem('id_plato');
-const form = document.getElementById('update');
+const form = document.getElementById('add');
+let id_max = -1;
+
+function calcularID() {
+    let url = "/api/platos/"+localStorage.getItem('restaurante_admin');
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+
+                id_max = data[0].id_plato;
+                for(let i=1;i<data.length;i++){
+                    if (data[i].id_plato > id_max){
+                        id_max = data[i].id_plato;
+                    }
+                }
+            })
+}
 
 form.addEventListener("click", function (event) {
 	// stop form submission
 	event.preventDefault();
     if (validateForm()){
-        mandarInfo();
+        if(id_max!=-1) {
+            id_max++;
+            mandarInfo();
+        }
     }
 });
 
@@ -26,7 +44,6 @@ function validateForm(){
         error.style.visibility = "visible";
         return false;
     }
-
     return true;
 }
 
@@ -43,18 +60,19 @@ precio.addEventListener("input", function (event) {
 });
 
 async function mandarInfo(){
-    let request = await fetch("api/platos/update/"+id_plato,{
+    console.log(desc.value);
+    let request = await fetch("api/platos/add",{
         method: "POST",
         credentials: "same-origin",
         headers: {
             "Content-type": "application/json"
-            "responseType" : 'text',
         },
         body: JSON.stringify({
-            id_plato: id_plato, 
+            id_rest: localStorage.getItem('restaurante_admin'),
+            id_plato: id_max,
             nombre: nombre.value,
             foto: foto.value,
-            desc: desc.value,
+            descripcion: desc.value,
             precio: precio.value,
             seccion: seccion.value
         }),
@@ -62,32 +80,9 @@ async function mandarInfo(){
     }).catch(console.error);
 
     if (request.ok){
-    	console.log(await request.json());
-        location.href = "admin_menu.html";
+    	//console.log(await request.json()); //no va correctamente
+        location.reload();
     }
 }
 
-function loadPlato() {
-	document.getElementById('id').innerHTML = localStorage.getItem('id_plato');
-	document.getElementById('foto').value = localStorage.getItem('foto_plato');
-	document.getElementById('nombre').value = localStorage.getItem('nombre_plato');
-	document.getElementById('desc').value = localStorage.getItem('desc_plato');
-	switch(localStorage.getItem('seccion_plato')) {
-		case "Primero":
-			document.getElementById('seccion').value = 1;
-		break;
-
-		case "Segundo":
-			document.getElementById('seccion').value = 2;
-		break;
-
-		case "Postre":
-			document.getElementById('seccion').value = 3;
-		break;
-
-	}
-
-	document.getElementById('precio').value = localStorage.getItem('precio_plato');
-}
-
-document.addEventListener('DOMContentLoaded',loadPlato());
+document.addEventListener('DOMContentLoaded',calcularID());

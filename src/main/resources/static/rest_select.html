@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Administrador - Platos</title>
+    <title>Seleccion de Restaurante</title>
     <!-- cambiar a icono que prefiramos-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -31,43 +31,32 @@
 <body>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container py-sm-2" style="padding-left: 5vw">
+    <div class="container py-sm-2">
         <h2>Acceso de administrador</h2>
-    </div>
-    <div style="padding-right: 5vw">
-        <a class="btn btn-dark btn-lg px-3" href="admin.html">Volver</a>
     </div>
 </nav>
 
 <!-- Section-->
 <section>
-    <div class="py-sm-3 row" style="padding-left: 5vw">
-        <div class="col-sm-9">
-            <h5>Elija el plato que quiere modificar/eliminar, o añade uno nuevo:</h5>
-        </div>
-        <div class="col-sm-3 align-items-center" style="padding-left: 10vw">
-            <a class="btn btn-outline-dark btn-lg px-2 mt-auto" href="add_plato.html">Añadir Plato</a>
-        </div>
+    <div class="py-sm-3" style="padding-left: 5vw">
+        <h5>Elija el restaurante que quiere actualizar:</h5>
     </div>
-    <div class="container py-sm-4">
-      <table class="table table-default border border-3 tabla_platos" id="tabla_platos">
+    <div class="container">
+      <table class="table table-default border border-3 tabla_res" id="tabla_res">
         <thead>
             <tr>
-                <th></th>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Seccion</th>
-                <th>Precio (€)</th>
-                <th>Opciones</th>
+                <th>Direccion</th>
+                <th></th>
             </tr>
         </thead>
-        <tbody id="data_platos" style="border-collapse: collapse;">
+        <tbody id="data_res" style="border-collapse: collapse;">
         </tbody>
       </table>
     </div>
+    <div style="padding-top: 54vh"/>
 </section>
-</br></br>
 <!-- Footer-->
 <footer class="py-sm-4 bg-dark footer">
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Pablo M & Alex A 2022</p></div>
@@ -76,6 +65,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-<script src="js/admin_menu.js"></script>
+<script src="js/rest_select.js"></script>
 </body>
 </html>

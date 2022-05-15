@@ -40,4 +40,11 @@ public class PlatoController {
 
     }
 
+    @PostMapping("/platos/add")
+    public @ResponseBody ResponseEntity<String> addPlato(@RequestBody PlatoDTO plato){
+        platoService.addPlato(plato);
+
+        return ResponseEntity.ok().body("plato anadido");
+    }
+
 }

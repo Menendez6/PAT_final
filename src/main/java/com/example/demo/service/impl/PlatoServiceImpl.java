@@ -51,4 +51,17 @@ public class PlatoServiceImpl implements PlatoService {
         String seccion = plato.seccion();
         jdbcTemplate.execute("UPDATE PLATOS SET NOMBRE ='"+name+"',PRECIO="+precio+",FOTO='"+foto+"',DESCRIPCION='"+descripcion+"',SECCION='"+seccion+"' WHERE PLATO_ID="+id);
     }
+
+    @Override
+    public void addPlato(PlatoDTO plato) {
+        Long id_rest = plato.id_rest();
+        Long id = plato.id_plato();
+        String name = plato.nombre();
+        BigDecimal precio = plato.precio();
+        String foto = plato.foto();
+        String descripcion = plato.descripcion();
+        String seccion = plato.seccion();
+        jdbcTemplate.execute("INSERT INTO PLATOS (PLATO_ID,NOMBRE,PRECIO,FOTO,DESCRIPCION,SECCION) VALUES ("+id+",'"+name+"',"+precio+",'"+foto+"','"+descripcion+"','"+seccion+"');");
+        jdbcTemplate.execute("INSERT INTO REST_PLATO (RESTAURANTE_ID,PLATO_ID) VALUES ("+id_rest+","+id+");");
+    }
 }
