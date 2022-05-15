@@ -3,6 +3,7 @@ INSERT INTO PLATOS (PLATO_ID,NOMBRE,PRECIO,FOTO,DESCRIPCION,SECCION) VALUES (010
 INSERT INTO PLATOS (PLATO_ID,NOMBRE,PRECIO,FOTO,DESCRIPCION,SECCION) VALUES (01003,'Secreto Iberico a la Plancha',17.50,'https://lacocinadelentula.files.wordpress.com/2012/08/dscn8711.jpg','con esparragos trigueros',2);
 INSERT INTO PLATOS (PLATO_ID,NOMBRE,PRECIO,FOTO,DESCRIPCION,SECCION) VALUES (01004,'Entrecot',17.50,'https://i.blogs.es/31bbf8/entrecot-lomo-bajo-patatas-pimientos-padron/1366_2000.jpg','con patatas fritas y pimientos de padron',2);
 INSERT INTO PLATOS (PLATO_ID,NOMBRE,PRECIO,FOTO,DESCRIPCION,SECCION) VALUES (01005,'Flan de Queso',4,'https://www.recetasderechupete.com/wp-content/uploads/2015/07/flan_de_queso.jpg?width=1200&enable=upscale','',3);
+INSERT INTO PLATOS (PLATO_ID,NOMBRE,PRECIO,FOTO,DESCRIPCION,SECCION) VALUES (01006,'Flan de Queso bad',4,'https://www.recetasderechupete.com/wp-content/uploads/2015/07/flan_de_queso.jpg?width=1200&enable=upscale','',3);
 
 INSERT INTO RESTAURANTES (RESTAURANTE_ID,NOMBRE,DIRECCION,FOTO) VALUES (01,'Casa Pablo','Calle Pechofrio Sainz 55','https://static.guiarepsol.com/fichas-gr/media/thumbnails/filer_public/b0/13/b0131f7f-888b-4a6a-b27d-c21cc0160d3a/tmptmp7kqjkuij8c2016f7a3114746bf45a7cf32afd033_1284x850_q75_middle.jpeg');
 

@@ -34,5 +34,10 @@ public class PlatoServiceImpl implements PlatoService {
                     new PlatoDTO(rs.getLong("RESTAURANTE_ID"), rs.getLong("PLATO_ID"), rs.getString("NOMBRE"), rs.getBigDecimal("PRECIO"), rs.getString("FOTO"),rs.getString("DESCRIPCION"),rs.getString("SECCION")));
         return joinList;
     }
+
+    @Override
+    public void deletePlatos(Long id) {
+        jdbcTemplate.execute("DELETE FROM PLATOS WHERE PLATO_ID='"+id+"'");
+    }
     
 }
