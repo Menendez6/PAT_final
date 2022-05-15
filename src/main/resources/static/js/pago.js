@@ -4,6 +4,18 @@ num_tarjeta = document.getElementById('num_tarjeta');
 expire = document.getElementById('expire');
 cvc = document.getElementById('cvc');
 nombre = document.getElementById('nombre');
+mesa_num = localStorage.getItem('mesa');
+var id_pedido = 0;
+pedido = localStorage.getItem('pedido');
+pedido = JSON.parse(pedido);
+envio = [];
+
+function delay(n){
+    return new Promise(function(resolve){
+        setTimeout(resolve,n*1000);
+    });
+}
+
 
 function cardnumber(inputtxt)
 {
@@ -55,14 +67,72 @@ function check_name(inputtxt){
     return true;
 }
 
+async function crearPedido(){
+	let request = await fetch("api/add_pedido",{
+		method: "POST",
+		credentials: "same-origin",
+		headers:{
+			"Content-type": "application/json"
+		},
+		body: JSON.stringify({
+			mesa: mesa_num,
+            precio: precio_total
+		}),
+		datatype: "json",
+	}).catch(console.error);
+
+	if (request.ok){
+        getId();
+        console.log(await request.json());
+
+    }
+}
+
+async function getId(){
+    fetch("api/getId")
+    .then(response => response.json())
+	.then(data => {
+        id_pedido=data.id;
+        for(let item in pedido){
+            addPlatos(id_pedido,item);
+        }
+
+    })
+
+    //await delay(1);
+    window.location.href='confirmado.html';
+}
+
+async function addPlatos(id_pedido,item){
+    let request = await fetch("api/addPlatoPedido",{
+        method: "POST",
+        credentials: "same-origin",
+        headers:{
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            'id_pedido':id_pedido,
+            'id_plato':item,
+            'num_platos': pedido[item]
+        }),
+        datatype: "json",
+    }).catch(console.error);
+
+    if (request.ok){
+        console.log(await request.json());
+    }
+
+
+}
+
 document.addEventListener('DOMContentLoaded', function(event){
 	console.log(precio_total);
     precio.innerHTML = 'Paga ' +precio_total + '€';
     precio.onclick = () => {
         
         if (check_CVC(cvc.value) && check_name(nombre.value) && expire_date(expire.value) && cardnumber(num_tarjeta.value)){
+            crearPedido();
             
-
         }
     }
 });

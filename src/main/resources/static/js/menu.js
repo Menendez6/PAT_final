@@ -113,24 +113,6 @@ async function mostrarPlatos(){
 }
 
 
-/*async function crearPedido(){
-	let request = await fetch("api/add_pedido/"+mesa,{
-		method: "POST",
-		credentials: "same-origin",
-		headers:{
-			"Content-type": "application/json"
-		},
-		body: JSON.stringify({
-			id: mesa
-		}),
-		datatype: "json",
-	}).catch(console.error);
-
-	if (request.ok){
-        console.log(await request.json());
-    }
-}*/
-
 document.addEventListener('DOMContentLoaded', function(event){
 	//crearPedido para la mesa X
 	//crearPedido()
