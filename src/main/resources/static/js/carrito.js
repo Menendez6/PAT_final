@@ -82,7 +82,9 @@ async function mostrarPlatos(){
             aqui.innerHTML = "No hay platos seleccionados";
         }else{
             aqui.innerHTML = "Total = " + precio_total + "€";
+            localStorage.setItem('precio_total',precio_total);
         }
+
 	})
 }
 
