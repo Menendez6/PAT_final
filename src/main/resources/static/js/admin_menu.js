@@ -103,7 +103,7 @@ function mostrarPlatos() {
             botonDelete.innerHTML = "Eliminar";
 
             botonDelete.addEventListener("click",function(event){
-                selectPlato(botonDelete.id.substring(7));
+                selectPlato(botonDelete.id.substring(6));
                 console.log("dentro");
                 borrarPlato();
             })
