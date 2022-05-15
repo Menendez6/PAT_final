@@ -54,7 +54,7 @@ async function mandarInfo(){
             id_plato: id_plato, 
             nombre: nombre.value,
             foto: foto.value,
-            desc: desc.value,
+            descripcion: desc.value,
             precio: precio.value,
             seccion: seccion.value
         }),
@@ -62,7 +62,7 @@ async function mandarInfo(){
     }).catch(console.error);
 
     if (request.ok){
-    	console.log(await request.json());
+    	//console.log(await request.json()); //no va
         location.href = "admin_menu.html";
     }
 }
