@@ -48,7 +48,6 @@ async function mandarInfo(){
         credentials: "same-origin",
         headers: {
             "Content-type": "application/json"
-            "responseType" : 'text',
         },
         body: JSON.stringify({
             id_plato: id_plato, 
