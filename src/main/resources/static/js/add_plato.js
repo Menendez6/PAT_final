@@ -44,8 +44,17 @@ function validateForm(){
         error.style.visibility = "visible";
         return false;
     }
-    return true;
+    
+    var numbers = /^\d+(?:\.\d{1,2})?$/;
+    if(precio.value.match(numbers)) {
+         return true;
+    } else {
+        errorFormat.style.visibility = "visible";
+        return false;
+    }
 }
+    
+
 
 nombre.addEventListener("input", function (event) {
 

@@ -27,7 +27,13 @@ function validateForm(){
         return false;
     }
 
-    return true;
+    var numbers = /^\d+(?:\.\d{1,2})?$/;
+    if(precio.value.match(numbers)) {
+         return true;
+    } else {
+        errorFormat.style.visibility = "visible";
+        return false;
+    }
 }
 
 nombre.addEventListener("input", function (event) {
@@ -39,6 +45,7 @@ nombre.addEventListener("input", function (event) {
 precio.addEventListener("input", function (event) {
 
     error.style.visibility = "hidden";
+    errorFormat.style.visibility = "hidden";
 
 });
 
