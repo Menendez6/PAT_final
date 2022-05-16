@@ -3,22 +3,12 @@ package com.example.demo.controller;
 import java.util.List;
 
 import com.example.demo.service.PedidoService;
-import com.example.demo.service.dto.IdDTO;
-import com.example.demo.service.dto.PedidoDTO;
-import com.example.demo.service.dto.PedidoDTO2;
-import com.example.demo.service.dto.PedidoPlato;
-import com.example.demo.service.dto.PlatoPedidoDTO;
+import com.example.demo.service.dto.*;
 
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -81,6 +71,30 @@ public class PedidoController {
         var pedido = pedidoService.getPedidoByMesa(mesa,id);
         
         return ResponseEntity.ok().body(pedido);
+    }
+
+    @GetMapping("/getPedidos/restaurante/{id}")
+    public ResponseEntity<List<PedidoPlato>> getPedidoByRestId(@PathVariable("id") Long id){
+
+        var pedidos = pedidoService.getPedidosByRestId(id);
+
+        return ResponseEntity.ok().body(pedidos);
+    }
+
+    @PostMapping("/pedido/update/{id}")
+    public @ResponseBody ResponseEntity<String> updatePedido(@RequestBody PedidoEstadoDTO pedido){
+        pedidoService.updatePedido(pedido);
+
+        return ResponseEntity.ok().body("pedido actualizado");
+
+    }
+
+    @DeleteMapping("/pedido/{id}")
+    public @ResponseBody ResponseEntity<String> deletePedido(@PathVariable("id") Long id){
+
+        pedidoService.deletePedido(id);
+
+        return ResponseEntity.ok().body("pedido eliminado");
     }
     
 }

@@ -121,4 +121,24 @@ thead {
     top: 0;
     background-color: #f7f4eb;
 }
+
+.cell-s {
+    width: 10%;
+}
+
+.cell-xs {
+    width: 6%;
+}
+
+.cell-xl {
+    width: 40%;
+}
+
+.col-m {
+    width: 12%;
+}
+
+.col-l {
+    width: 14%;
+}
          

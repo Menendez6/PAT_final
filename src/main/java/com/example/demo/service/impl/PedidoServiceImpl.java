@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
@@ -7,11 +8,7 @@ import java.util.stream.StreamSupport;
 import com.example.demo.model.PedidoTable;
 import com.example.demo.repository.PedidoRepository;
 import com.example.demo.service.PedidoService;
-import com.example.demo.service.dto.IdDTO;
-import com.example.demo.service.dto.PedidoDTO;
-import com.example.demo.service.dto.PedidoDTO2;
-import com.example.demo.service.dto.PedidoPlato;
-import com.example.demo.service.dto.PlatoPedidoDTO;
+import com.example.demo.service.dto.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -91,6 +88,34 @@ public class PedidoServiceImpl implements PedidoService {
                     new PedidoDTO2(rs.getLong("PEDIDO_ID"), rs.getLong("MESA"), rs.getBigDecimal("PRECIO"),rs.getLong("ESTADO"),rs.getLong("RESTAURANTE_ID")));
         return joinList;
     }
-    
-    
+
+    @Override
+    public List<PedidoPlato> getPedidosByRestId(Long id_rest) {
+        String query =
+                """
+                SELECT PLATOS.NOMBRE, PEDIDO_PLATO.NUM_PLATOS, PEDIDOS.PEDIDO_ID, PEDIDOS.MESA, PEDIDOS.PRECIO, PEDIDOS.ESTADO
+                FROM PEDIDO_PLATO
+                RIGHT JOIN PEDIDOS ON (PEDIDO_PLATO.PEDIDO_ID = PEDIDOS.PEDIDO_ID)
+                RIGHT JOIN PLATOS ON (PLATOS.PLATO_ID = PEDIDO_PLATO.PLATO_ID)
+                WHERE PEDIDOS.RESTAURANTE_ID = """ +id_rest;
+
+        List<PedidoPlato> joinList = jdbcTemplate.query(
+                query,
+                (rs,rowNum) ->
+                        new PedidoPlato(rs.getString("NOMBRE"),rs.getLong("NUM_PLATOS"),rs.getLong("PEDIDO_ID"), rs.getLong("MESA"), rs.getBigDecimal("PRECIO"),rs.getLong("ESTADO")));
+        return joinList;
+    }
+
+    @Override
+    public void updatePedido(PedidoEstadoDTO pedido) {
+        Long id = pedido.id_pedido();
+        Long estado = pedido.estado();
+        jdbcTemplate.execute("UPDATE PEDIDOS SET ESTADO="+estado+" WHERE PEDIDO_ID="+id);
+    }
+
+    @Override
+    public void deletePedido(Long id) {
+        jdbcTemplate.execute("DELETE FROM PEDIDOS WHERE PEDIDO_ID='"+id+"'");
+    }
+
 }

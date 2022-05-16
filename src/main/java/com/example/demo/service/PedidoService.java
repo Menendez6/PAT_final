@@ -2,11 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import com.example.demo.service.dto.IdDTO;
-import com.example.demo.service.dto.PedidoDTO;
-import com.example.demo.service.dto.PedidoDTO2;
-import com.example.demo.service.dto.PedidoPlato;
-import com.example.demo.service.dto.PlatoPedidoDTO;
+import com.example.demo.service.dto.*;
 
 import org.springframework.stereotype.Service;
 
@@ -26,4 +22,10 @@ public interface PedidoService {
     List<PedidoPlato> getPedidoById2(Long id);
 
     List<PedidoDTO2> getPedidoByMesa(Long mesa,Long id_rest);
+
+    List<PedidoPlato> getPedidosByRestId(Long id_rest);
+
+    void updatePedido(PedidoEstadoDTO pedido);
+
+    void deletePedido(Long id);
 }

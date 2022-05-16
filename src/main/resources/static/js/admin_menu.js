@@ -53,30 +53,17 @@ function mostrarPlatos() {
                 location.href = "mod_plato.html";
             })
 
-            //document.getElementById('botones'+data_p[i].id_plato).appendChild(botonModify);
-
             text_del = document.createTextNode('Eliminar');
             var botonDelete = document.createElement("button");
-            botonDelete.className = "btn btn-danger btn-outline-dark mt-auto py-1 px-3";
+            botonDelete.className = "btn btn-danger btn-outline-white mt-auto py-1 px-3";
             botonDelete.id = 'delete'+data_p[i].id_plato;
-            //botonModify.id = 'modify'+data_p[i].id_plato;
-            //botonModify.onclick = "selectPlato("+data_p[i].id_plato+")";
-            //botonModify.innerHTML = "Modificar";
             botonDelete.appendChild(text_del);
-
-            /*var botonDelete = document.createElement("");
-            botonDelete.className = "btn btn-danger btn-outline-dark mt-auto py-1 px-3";
-            botonDelete.id = 'delete'+data_p[i].id_plato;
-            //botonDelete.onclick = "selectPlato("+data_p[i].id_plato+")";
-            botonDelete.innerHTML = "Eliminar";*/
 
             botonDelete.addEventListener("click",function(event){
                 selectPlato(this.id.substring(6));
                 console.log("dentro");
                 borrarPlato();
             })
-
-            //document.getElementById('botones'+data_p[i].id_plato).appendChild(botonDelete);
 
             var row = tabla.insertRow();
 
