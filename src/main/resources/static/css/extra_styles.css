@@ -106,11 +106,6 @@ input:disabled{
     padding-bottom: 20vh;
 }
 
-.tabla_platos, .tabla_res {
-    border-color: #195fb5 !important;
-    background-color: #f7f4eb;
-    border-collapse:separate;
-}
 
 .tabla_platos {
     visibility: hidden;
