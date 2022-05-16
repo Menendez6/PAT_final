@@ -19,4 +19,22 @@ public class PedidoTable {
     private @Column("MESA") Long mesa;
     private @Column("PRECIO") BigDecimal precio;
     private @Column("ESTADO") Long estado;
+    private @Column("RESTAURANTE_ID") Long id_restaurante;
+
+    public Long getId() {
+        return id;
+    }
+    public Long getMesa() {
+        return mesa;
+    }
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+    public Long getEstado() {
+        return estado;
+    } 
+
+    public Long getIdRestaurante(){
+        return id_restaurante;
+    }
 }

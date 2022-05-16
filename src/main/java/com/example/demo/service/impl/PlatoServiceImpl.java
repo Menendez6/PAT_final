@@ -27,7 +27,7 @@ public class PlatoServiceImpl implements PlatoService {
         SELECT REST_PLATO.RESTAURANTE_ID, PLATOS.PLATO_ID, PLATOS.NOMBRE, PLATOS.PRECIO, PLATOS.FOTO, PLATOS.DESCRIPCION, PLATOS.SECCION
         FROM REST_PLATO
         RIGHT JOIN PLATOS ON (REST_PLATO.PLATO_ID = PLATOS.PLATO_ID)
-        """;
+        WHERE REST_PLATO.RESTAURANTE_ID = """ +id_rest;
 
         List<PlatoDTO> joinList = jdbcTemplate.query(
             query,
