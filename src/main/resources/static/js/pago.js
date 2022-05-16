@@ -10,6 +10,8 @@ pedido = localStorage.getItem('pedido');
 pedido = JSON.parse(pedido);
 envio = [];
 
+id_rest = localStorage.getItem('restaurante');
+
 function delay(n){
     return new Promise(function(resolve){
         setTimeout(resolve,n*1000);
@@ -76,7 +78,8 @@ async function crearPedido(){
 		},
 		body: JSON.stringify({
 			mesa: mesa_num,
-            precio: precio_total
+            precio: precio_total,
+            id_restaurante: id_rest
 		}),
 		datatype: "json",
 	}).catch(console.error);
@@ -95,6 +98,7 @@ async function getId(){
         id_pedido=data.id;
 
     })
+    console.log(id_pedido);
     await delay(1);
     for(let item in pedido){
         addPlatos(id_pedido,item);

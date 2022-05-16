@@ -6,6 +6,7 @@ import com.example.demo.service.PedidoService;
 import com.example.demo.service.dto.IdDTO;
 import com.example.demo.service.dto.PedidoDTO;
 import com.example.demo.service.dto.PedidoDTO2;
+import com.example.demo.service.dto.PedidoPlato;
 import com.example.demo.service.dto.PlatoPedidoDTO;
 
 import org.apache.catalina.connector.Response;
@@ -66,5 +67,20 @@ public class PedidoController {
         return ResponseEntity.ok().body(pedido);
     }
 
+    @GetMapping("/getPedido2/{id}")
+    public ResponseEntity<List<PedidoPlato>> getPedidoPlato(@PathVariable("id") Long id){
+        
+        var pedido = pedidoService.getPedidoById2(id);
+        
+        return ResponseEntity.ok().body(pedido);
+    }
+
+    @GetMapping("/getPedidoMesa/{id}/{mesa}")
+    public ResponseEntity<List<PedidoDTO2>> getPedidoMesa(@PathVariable("mesa") Long mesa,@PathVariable("id") Long id){
+        
+        var pedido = pedidoService.getPedidoByMesa(mesa,id);
+        
+        return ResponseEntity.ok().body(pedido);
+    }
     
 }

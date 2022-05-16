@@ -2,10 +2,14 @@ package com.example.demo.service.dto;
 
 import java.math.BigDecimal;
 
-public record PedidoDTO(
+public record PedidoPlato(
+    String nombre,
+    Long num_platos,
+    Long id_pedido,
     Long mesa,
     BigDecimal precio,
-    Long id_restaurante
+    Long estado
+
 ) {
     
 }

@@ -6,7 +6,8 @@ public record PedidoDTO2(
     Long id_pedido,
     Long mesa,
     BigDecimal precio,
-    Long estado
+    Long estado,
+    Long id_restaurante
 
 ) {
     

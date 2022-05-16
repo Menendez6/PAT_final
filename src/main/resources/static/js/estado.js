@@ -19,3 +19,5 @@ async function getPedido(){
 
     })
 }
+
+document.addEventListener('DOMContentLoaded',getPedido());

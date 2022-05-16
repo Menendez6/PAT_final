@@ -10,6 +10,7 @@ import com.example.demo.service.PedidoService;
 import com.example.demo.service.dto.IdDTO;
 import com.example.demo.service.dto.PedidoDTO;
 import com.example.demo.service.dto.PedidoDTO2;
+import com.example.demo.service.dto.PedidoPlato;
 import com.example.demo.service.dto.PlatoPedidoDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class PedidoServiceImpl implements PedidoService {
     
     @Override
     public void crearPedido(PedidoDTO pedido) {
-        jdbcTemplate.execute("INSERT INTO PEDIDOS (MESA, PRECIO, ESTADO) VALUES ("+pedido.mesa()+","+pedido.precio()+","+1+")");
+        jdbcTemplate.execute("INSERT INTO PEDIDOS (MESA, PRECIO, ESTADO, RESTAURANTE_ID) VALUES ("+pedido.mesa()+","+pedido.precio()+","+1+","+pedido.id_restaurante()+")");
         
     }
 
@@ -57,14 +58,38 @@ public class PedidoServiceImpl implements PedidoService {
     public PedidoDTO2 getPedidoById(Long id) {
         Optional<PedidoTable> opedido = pedidoRepo.findById(id);
         PedidoTable table = opedido.get();
-        PedidoDTO2 pedido = new PedidoDTO2(table.getId(), table.getMesa(), table.getPrecio(), table.getEstado());
+        PedidoDTO2 pedido = new PedidoDTO2(table.getId(), table.getMesa(), table.getPrecio(), table.getEstado(),table.getIdRestaurante());
         return pedido;
     }
 
+
     @Override
-    public List<PedidoDTO2> getPedidoByMesa(Long mesa) {
-        String query = "SELECT * FROM PEDIDOS WHERE MESA = " + mesa;
-        return null;
+    public List<PedidoPlato> getPedidoById2(Long id) {
+        String query = 
+        """
+        SELECT PLATOS.NOMBRE, PEDIDO_PLATO.NUM_PLATOS, PEDIDOS.PEDIDO_ID, PEDIDOS.MESA, PEDIDOS.PRECIO, PEDIDOS.ESTADO
+        FROM PEDIDO_PLATO
+        RIGHT JOIN PEDIDOS ON (PEDIDO_PLATO.PEDIDO_ID = PEDIDOS.PEDIDO_ID)
+        RIGHT JOIN PLATOS ON (PLATOS.PLATO_ID = PEDIDO_PLATO.PLATO_ID)
+        WHERE PEDIDOS.PEDIDO_ID = """ +id;
+
+
+        List<PedidoPlato> joinList = jdbcTemplate.query(
+            query,
+            (rs,rowNum) ->
+                    new PedidoPlato(rs.getString("NOMBRE"),rs.getLong("NUM_PLATOS"),rs.getLong("PEDIDO_ID"), rs.getLong("MESA"), rs.getBigDecimal("PRECIO"),rs.getLong("ESTADO")));
+        return joinList;
+    }
+
+    @Override
+    public List<PedidoDTO2> getPedidoByMesa(Long mesa,Long id_rest) {
+        String query = "SELECT * FROM PEDIDOS WHERE (mesa ="+mesa+") AND (RESTAURANTE_ID =" +id_rest+")";
+        
+        List<PedidoDTO2> joinList = jdbcTemplate.query(
+            query,
+            (rs,rowNum) ->
+                    new PedidoDTO2(rs.getLong("PEDIDO_ID"), rs.getLong("MESA"), rs.getBigDecimal("PRECIO"),rs.getLong("ESTADO"),rs.getLong("RESTAURANTE_ID")));
+        return joinList;
     }
     
     
