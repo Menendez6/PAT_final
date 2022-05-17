@@ -15,6 +15,10 @@ function mostrarPedidos() {
     .then(response => response.json())
     .then(data => {
         console.log(data);
+        data.sort(function(a, b){
+            return a.id_pedido - b.id_pedido;
+        });
+
 
         if (data.length > 0) {
           var temp2 = '';

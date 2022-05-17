@@ -8,6 +8,9 @@ function mostrarPlatos() {
     .then(data_p => {
         console.log(data_p);
         console.log(data_p.length);
+        data_p.sort(function(a, b){
+            return a.seccion - b.seccion;
+        });
 
         if (data_p.length > 0) {
           var temp2 = '';
