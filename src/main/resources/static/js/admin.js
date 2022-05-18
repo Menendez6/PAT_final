@@ -18,7 +18,7 @@ async function mostrarRestaurantes(){
 
             boton.addEventListener("click",function(event){
                 selectRestaurante(this.id);
-                location.href='admin.html';
+                location.href='admin_acciones.html';
             })
 
             var row = tabla.insertRow();

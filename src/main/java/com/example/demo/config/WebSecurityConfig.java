@@ -17,7 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/security/whoami")
 				.and()
                 .authorizeRequests()
-                .antMatchers("/index.html").authenticated()
+                .antMatchers("/add_plato.html","/admin_acciones.html","/admin_menu.html","/admin.html","/mod_pedidos.html","/mod_plato.html").authenticated()
 				.anyRequest().permitAll()
 				.and()
 				.httpBasic()

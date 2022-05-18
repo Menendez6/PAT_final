@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-        <title>Administrador</title>
+    <title>Seleccion de Restaurante</title>
     <!-- cambiar a icono que prefiramos-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -19,7 +19,6 @@
     <style type="text/css">
         body {
           overflow-x: hidden;
-          overflow-y: hidden;
           max-width: 100%;
         }
 
@@ -30,35 +29,42 @@
 
 </head>
 <body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container py-sm-2">
-            <h2>Acceso de administrador</h2>
-        </div>
-    </nav>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container py-sm-2">
+        <h2>Acceso de administrador</h2>
+    </div>
+</nav>
 
-    <!-- Section-->
-    <section>
-        <div class="row" style="height: 92vh">
-            <div class="col-sm-6 text-center py-sm-5 px-sm-2" style="height: 92vh">
-                <div class="div-btn">
-                    <a class="btn btn-outline-dark py-sm-4 px-sm-4 mt-auto btn-admin-xl" id="btn-pedidos" href="mod_pedidos.html">Revisar Pedidos</a>
-                </div>
-            </div>
-            <div class="col-sm-6 text-center py-sm-5 px-sm-2" style="height: 92vh">
-                <div class="div-btn">
-                    <a class="btn btn-outline-dark py-4 px-4 mt-auto btn-admin-xl" id="btn-menus" href="admin_menu.html">Modificar Menú</a>
-                </div>
-            </div>
-        </div>
-    </section>  
-    <!-- Footer-->
-    <footer class="py-sm-4 bg-dark footer footer-alt">
-        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Pablo M & Alex A 2022</p></div>
-    </footer>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+<!-- Section-->
+<section>
+    <div class="py-sm-3" style="padding-left: 5vw">
+        <h5>Elija el restaurante que quiere actualizar:</h5>
+    </div>
+    <div class="container">
+      <table class="table table-default table-white border border-3" id="tabla_res">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="data_res" style="border-collapse: collapse;">
+        </tbody>
+      </table>
+    </div>
+    <div style="padding-top: 54vh"/>
+</section>
+<!-- Footer-->
+<footer class="py-sm-4 bg-dark footer">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Pablo M & Alex A 2022</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<script src="js/admin.js"></script>
 </body>
 </html>
