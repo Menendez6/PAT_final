@@ -3,9 +3,11 @@ package com.example.demo.controller;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.example.demo.repository.PedidoRepository;
 import com.example.demo.service.dto.IdDTO;
 import com.example.demo.service.dto.PedidoDTO;
 import com.example.demo.service.dto.PedidoDTO2;
+import com.example.demo.service.dto.PedidoEstadoDTO;
 import com.example.demo.service.dto.PedidoPlato;
 import com.example.demo.service.dto.PlatoPedidoDTO;
 
@@ -32,6 +34,10 @@ public class PedidoControllerTest {
 
     @Autowired
 	private TestRestTemplate restTemplate;
+
+    @Autowired
+    private PedidoRepository pedidoRepository;
+
 
     @Test
     public void given_app_when_add_Pedido_then_ok(){
@@ -147,6 +153,56 @@ public class PedidoControllerTest {
         then(result.getBody().size()).isEqualTo(1);
     }
 
+    @Test
+    public void given_app_when_get_PedidoByRestId_then_ok(){
+
+        //Given
+        String address = "http://localhost:" + port + "/api/getPedidos/restaurante/1";
+
+        //When
+        ResponseEntity<List<PedidoPlato>> result =
+                restTemplate.exchange(
+                        address,
+                        HttpMethod.GET,
+                        null,
+                        new ParameterizedTypeReference<>() {}
+                );
+
+        //Then
+        then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+        then(result.getBody().size()).isEqualTo(5);
+    }
+
+    @Test
+    public void given_app_when_update_PlatoPedido_then_ok(){
+        String address = "http://localhost:"+port+"/api/pedido/update/1";
+        PedidoEstadoDTO pedido = new PedidoEstadoDTO(1l, 3L);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<PedidoEstadoDTO> request = new HttpEntity<>(pedido,headers);
+
+        ResponseEntity<String> result = this.restTemplate.postForEntity(address, request, String.class);
+        
+        String expectedResult = "pedido actualizado";
+
+        then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+        then(result.getBody()).isEqualTo(expectedResult);
+    }
+
+    //No lo ejecuto porque al borrar me cambia el resto de tests, pero funciona
+    /*@Test
+    public void given_app_when_delete_Pedido_then_ok(){
+        String address = "http://localhost:"+port+"/api/pedido/1";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Long> request = new HttpEntity<>(1L,headers);
+
+        this.restTemplate.delete(address);
+        
+        String expectedResult = "pedido eliminado";
+
+        then(pedidoRepository.count()).isEqualTo(4);
+    }*/
 
 
 

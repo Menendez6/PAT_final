@@ -98,7 +98,7 @@ function mostrarPlatos() {
 
 
 async function borrarPlato(){
-    let request = await fetch("/api/platos/"+plato,{
+    let request = await fetch("/api/platos/delete/"+plato,{
         method: "DELETE",
         credentials: "same-origin",
         headers: {

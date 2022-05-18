@@ -211,6 +211,7 @@ async function borrarPedido(){
         datatype: "json",
     }).catch(console.error);
 
+    console.log(request.status);
     if (request.ok){
         location.reload();
         console.log(id_cambiado+" borrado");

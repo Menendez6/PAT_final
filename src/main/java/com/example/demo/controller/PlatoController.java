@@ -24,7 +24,7 @@ public class PlatoController {
         return ResponseEntity.ok().body(platos);
     }
 
-    @DeleteMapping("/platos/{id}")
+    @DeleteMapping("/platos/delete/{id}")
     public @ResponseBody ResponseEntity<String> deletePlato(@PathVariable("id") Long id){
 
        platoService.deletePlato(id);
