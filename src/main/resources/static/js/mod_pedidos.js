@@ -123,7 +123,7 @@ function mostrarPedidos() {
 
                 cell1.innerHTML = data[i].id_pedido;
                 cell2.innerHTML = data[i].mesa;
-                cell3.innerHTML = data[i].precio;
+                cell3.innerHTML = data[i].precio+'€';
                 cell4.innerHTML = data[i].nombre;
                 cell5.innerHTML = data[i].num_platos;
                 if (tabla_entregado) {

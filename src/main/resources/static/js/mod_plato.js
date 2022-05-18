@@ -91,6 +91,10 @@ function loadPlato() {
 			document.getElementById('seccion').value = 3;
 		break;
 
+		case "Bebida":
+        	document.getElementById('seccion').value = 4;
+        break;
+
 	}
 
 	document.getElementById('precio').value = localStorage.getItem('precio_plato');

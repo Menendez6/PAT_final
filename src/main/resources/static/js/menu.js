@@ -1,6 +1,7 @@
 primeros = document.getElementById("primeros");
 segundos = document.getElementById("segundos");
 postres = document.getElementById("postres");
+bebidas = document.getElementById("bebidas");
 carro = document.getElementById('carro');
 carro.innerHTML = localStorage.getItem('carro');
 nombre_rest = document.getElementById('nombre_rest');
@@ -36,7 +37,7 @@ async function mostrarPlatos(){
 			var code = '<div class="col">' +
                           '<div class="row h-auto no-gutters">'+
                             '<div class="col-3">'+
-                              '<img src='+data[i].foto+' class="card-img pt-3" alt="...">'+
+                              '<img src='+data[i].foto+' class="card-img pt-3 px-1" style="max-height: 20vh; max-width: auto" alt="...">'+
                             '</div>'+
                             '<div class="col-7">'+
                               '<div class="ml-0 py-2">'+
@@ -77,6 +78,9 @@ async function mostrarPlatos(){
 			if (data[i].seccion == "3"){
 				postres.appendChild(div1);
 			}
+			if (data[i].seccion == "4"){
+            	bebidas.appendChild(div1);
+            }
 			
 			
 			//Metemos la funcionalidad de poder seleccionar el número de platos que quieres en cada cosa

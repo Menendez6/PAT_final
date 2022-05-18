@@ -31,6 +31,10 @@ function mostrarPlatos() {
                 case "3":
                 seccion = 'Postre';
                 break;
+
+                case "4":
+                seccion = 'Bebida';
+                break;
             }
 
             img = document.createElement('img');
