@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.demo.service.dto.IdDTO;
 import com.example.demo.service.dto.PedidoDTO;
 import com.example.demo.service.dto.PedidoDTO2;
+import com.example.demo.service.dto.PedidoPlato;
 import com.example.demo.service.dto.PlatoPedidoDTO;
 
 import org.junit.jupiter.api.Test;
@@ -13,8 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -74,6 +77,26 @@ public class PedidoControllerTest {
     }
 
     @Test
+    public void given_app_when_get_PlatosPedidos_then_ok(){
+
+        //Given
+        String address = "http://localhost:" + port + "/api/getPlatosPedidos";
+
+        //When
+        ResponseEntity<List<PlatoPedidoDTO>> result =
+                restTemplate.exchange(
+                        address,
+                        HttpMethod.GET,
+                        null,
+                        new ParameterizedTypeReference<>() {}
+                );
+
+        //Then
+        then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+        then(result.getBody().size()).isEqualTo(3);
+    }
+
+    @Test
     public void given_app_when_add_getPedidoId_then_ok(){
         String address = "http://localhost:"+port+"/api/getPedido/1";
         ResponseEntity<PedidoDTO2> result = this.restTemplate.getForEntity(address, PedidoDTO2.class);
@@ -83,6 +106,48 @@ public class PedidoControllerTest {
         then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
         then(result.getBody()).isEqualTo(pedido);
     }
+
+    @Test
+    public void given_app_when_get_PedidoPlato_then_ok(){
+
+        //Given
+        String address = "http://localhost:" + port + "/api/getPedido2/1";
+
+        //When
+        ResponseEntity<List<PedidoPlato>> result =
+                restTemplate.exchange(
+                        address,
+                        HttpMethod.GET,
+                        null,
+                        new ParameterizedTypeReference<>() {}
+                );
+
+        //Then
+        then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+        then(result.getBody().size()).isEqualTo(3);
+    }
+
+    @Test
+    public void given_app_when_get_PedidoMesa_then_ok(){
+
+        //Given
+        String address = "http://localhost:" + port + "/api/getPedidoMesa/1/25";
+
+        //When
+        ResponseEntity<List<PedidoDTO2>> result =
+                restTemplate.exchange(
+                        address,
+                        HttpMethod.GET,
+                        null,
+                        new ParameterizedTypeReference<>() {}
+                );
+
+        //Then
+        then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+        then(result.getBody().size()).isEqualTo(1);
+    }
+
+
 
 
 }
