@@ -2,6 +2,9 @@ id_pedido = localStorage.getItem('id_pedido');
 titulo = document.getElementById('titulo');
 subtitulo = document.getElementById('subtitulo');
 
+//Evita que se pueda volver atrás
+history.forward();
+
 async function getPedido(){
     fetch("api/getPedido/"+id_pedido)
     .then(response => response.json())
