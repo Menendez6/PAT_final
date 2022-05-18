@@ -99,7 +99,7 @@ public class PedidoControllerTest {
 
         //Then
         then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-        then(result.getBody().size()).isEqualTo(4);
+        then(result.getBody().size()).isEqualTo(18);
     }
 
     @Test
@@ -170,7 +170,7 @@ public class PedidoControllerTest {
 
         //Then
         then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-        then(result.getBody().size()).isEqualTo(5);
+        then(result.getBody().size()).isEqualTo(12);
     }
 
     @Test

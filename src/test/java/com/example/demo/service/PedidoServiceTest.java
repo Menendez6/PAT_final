@@ -39,7 +39,7 @@ public class PedidoServiceTest {
         IdDTO id = pedidoService.getId();
         
 
-        then(id.id()).isEqualTo(5L);
+        then(id.id()).isEqualTo(9L);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class PedidoServiceTest {
         PedidoDTO pedido = new PedidoDTO(30L, new BigDecimal(20), 1L);
         pedidoService.crearPedido(pedido);
 
-        then(pedidoRepository.count()).isEqualTo(4);
+        then(pedidoRepository.count()).isEqualTo(8);
     }
 
     @Test 
@@ -55,7 +55,7 @@ public class PedidoServiceTest {
         PlatoPedidoDTO plato = new PlatoPedidoDTO(1L, 1001L, 4L);
         pedidoService.addPlatoPedido(plato);
 
-        then(pedidoPlatoRepository.count()).isEqualTo(6);
+        then(pedidoPlatoRepository.count()).isEqualTo(20);
     }
 
     @Test

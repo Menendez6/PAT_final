@@ -50,7 +50,7 @@ public class PlatoControllerTest {
 
         //Then
         then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-        then(result.getBody().size()).isEqualTo(5);
+        then(result.getBody().size()).isEqualTo(20);
     }
 
     /*@Test
@@ -81,7 +81,7 @@ public class PlatoControllerTest {
     @Test
     public void given_app_when_add_Plato_then_ok(){
         String address = "http://localhost:"+port+"/api/platos/add";
-        PlatoDTO plato = new PlatoDTO(1L, 1006L, "Macarrones", new BigDecimal(12), "", "con tomate", "1");
+        PlatoDTO plato = new PlatoDTO(1L, 1030L, "Macarrones", new BigDecimal(12), "", "con tomate", "1");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<PlatoDTO> request = new HttpEntity<>(plato,headers);
