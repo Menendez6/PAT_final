@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+//Todas las funciones para manipular la información correspondiente a los restaurantes
 @RestController
 @RequestMapping("/api")
 public class RestaurantController {
@@ -19,6 +20,7 @@ public class RestaurantController {
     @Autowired
     private RestService restService;
 
+    //Obtener todos los restaurantes
     @GetMapping("/restaurants")
     public ResponseEntity<List<RestDTO>> getRestaurants(){
 
@@ -27,6 +29,7 @@ public class RestaurantController {
         return ResponseEntity.ok().body(restaurants);
     }
 
+    //Obtener el id del restaurante
     @GetMapping("/restaurants/{id}")
     public ResponseEntity<RestDTO> getRestaurantById(@PathVariable("id") Long id){
         var restaurant = restService.getRestById(id);

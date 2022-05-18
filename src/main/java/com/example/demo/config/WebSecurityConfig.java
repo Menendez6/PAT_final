@@ -8,6 +8,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+
+//En esta clase, vamos a configurar la seguridad.
+//La seguridad de nuestra aplicación únicamente aparece en el lado del administrador
+//Los usuarios no tienen que darse de alta para poder utilizar la aplicación
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
