@@ -87,4 +87,53 @@ input:disabled{
         font: 16px/1 Arial,sans-serif;
     }
 }
+
+.footer-alt {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.btn-admin-xl {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.div-btn {
+    vertical-align: baseline;
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+}
+
+
+.tabla_platos {
+    visibility: hidden;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #f7f4eb;
+}
+
+.cell-s {
+    width: 10%;
+}
+
+.cell-xs {
+    width: 6%;
+}
+
+.cell-xl {
+    width: 40%;
+}
+
+.col-m {
+    width: 12%;
+}
+
+.col-l {
+    width: 14%;
+}
          

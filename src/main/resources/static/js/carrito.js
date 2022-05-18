@@ -43,14 +43,14 @@ async function mostrarPlatos(){
                                 '</div>'+
                             '</div>'+
                             '<div class="row no-gutters">'+
-                                '<div class="col-7">'+
+                                '<div class="col-6">'+
                                 '</div>'+
                                 '<div class="col-3 pr-0 pl-4">'+
                                     '<div class="qty py-1 pr-0 pl-5">'+
                                             '<h5>'+pedido[data[i].id_plato]+'</h5> ' +
                                         '</div>'+
                                 '</div>'+
-                                '<div class="col-2 float-left px-0">'+
+                                '<div class="col-3 float-left px-0">'+
                                     '<a id="boton'+i+'" class="btn btn-danger mt-auto btn-eliminar py-1 px-1 mt-auto" href="#">Eliminar</a></div>'+
                             '</div>'+
                     '</div>'+'<hr class="mb-0">'

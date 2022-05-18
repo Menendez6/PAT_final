@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Añadir Plato</title>
+    <!-- cambiar a icono que prefiramos-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/extra_styles.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <style type="text/css">
+        body {
+          overflow-x: hidden;
+          max-width: 100%;
+        }
+
+        p {
+            font-size:65%;
+        }
+        </style>
+
+</head>
+<body>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container py-sm-2" style="padding-left: 5vw">
+        <h2>Acceso de administrador</h2>
+    </div>
+    <div style="padding-right: 5vw">
+    	<a class="btn btn-dark btn-lg px-3" href="admin_menu.html">Volver</a>
+    </div>
+</nav>
+
+<!-- Section-->
+<section>
+        <div class="container py-sm-3 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-sm-12">
+              <div class="card bg-white border-dark border-3 text-dark" style="border-radius: 1rem;">
+                <div class="card-body px-5 py-4 text-center">
+                    <h4 class="fw-bold pb-sm-4 text-start">Añadir Plato:</h4>
+
+                    <div class="form-outline form-white mb-4">
+                        <div class="row">
+                            <div class="col-sm-2 text-start align-items-center">
+                                <label class="form-label" for="foto">URL de imagen:</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input type="text" id="foto" class="form-control" placeholder="https://example.com/imagen" />                     
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                        <div class="row">
+                            <div class="col-sm-2 text-start align-items-center">
+                                <label class="form-label" for="nombre">Nombre:</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input type="text" id="nombre" class="form-control" placeholder="(Obligatorio)"/>                     
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                        <div class="row">
+                            <div class="col-sm-2 text-start align-items-center">
+                                <label class="form-label" for="desc">Descripcion:</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input type="text" id="desc" class="form-control" placeholder="(Opcional)" />                     
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                        <div class="row">
+                            <div class="col-sm-2 text-start align-items-center">
+                                <label class="form-label" for="seccion">Seccion:</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <select id="seccion" class="form-select">
+                                    <option value="1" id="seccion1">Primero</option>
+                                    <option value="2" id="seccion2">Segundo</option>
+                                    <option value="3" id="seccion3">Postre</option>
+                                </select>                  
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                        <div class="row">
+                            <div class="col-sm-2 text-start align-items-center">
+                                <label class="form-label" for="precio">Precio:</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input type="text" id="precio" class="form-control" placeholder="(Obligatorio)"/>                     
+                            </div>
+                        </div>
+                    </div>
+
+                    <p id="error" style="visibility:hidden;color:red">Introduce valores en los campos</p>
+                     <p id="errorFormat" style="visibility:hidden;color:red">Introduce un precio válido (ej.: 12.95)</p>
+      
+                    <button class="btn btn-dark btn-lg px-5" type="submit" id="add">Añadir</button>
+      
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+<!-- Footer-->
+<footer class="py-sm-4 bg-dark footer">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Pablo M & Alex A 2022</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<script src="js/add_plato.js"></script>
+</body>
+</html>

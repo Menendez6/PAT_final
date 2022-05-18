@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Administrador - Pedidos</title>
+    <!-- cambiar a icono que prefiramos-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/extra_styles.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <style type="text/css">
+        body {
+          overflow-x: hidden;
+          max-width: 100%;
+        }
+
+        p {
+            font-size:65%;
+        }
+        </style>
+
+</head>
+<body>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container py-sm-2" style="padding-left: 5vw">
+        <h2>Acceso de administrador</h2>
+    </div>
+    <div style="padding-right: 5vw">
+        <a class="btn btn-dark btn-lg px-3" href="admin.html">Volver</a>
+    </div>
+</nav>
+
+<!-- Section-->
+<section>
+    <div class="py-sm-3 row" style="padding-left: 5vw">
+        <div class="col-sm-9">
+            <h5>Pedidos confirmados:</h5>
+        </div>
+    </div>
+    <div class="container pb-sm-4">
+      <table class="table table-default table-white border border-3">
+        <thead>
+            <tr>
+                <th class="cell-s">ID</th>
+                <th class="cell-xs">Mesa</th>
+                <th class="cell-xs">Precio</th>
+                <th class="cell-xl">Plato</th>
+                <th class="cell-xs">Cantidad</th>
+                <th class="cell-l">Estado</th>
+                <th class="cell-s"></th>
+            </tr>
+        </thead>
+        <tbody id="confirmados" style="border-collapse: collapse;">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="py-sm-3 row" style="padding-left: 5vw">
+        <div class="col-sm-9">
+            <h5>Pedidos en cocina:</h5>
+        </div>
+    </div>
+    <div class="container pb-sm-4">
+      <table class="table table-default table-white border border-3">
+        <thead>
+            <tr>
+                <th class="cell-s">ID</th>
+                <th class="cell-xs">Mesa</th>
+                <th class="cell-xs">Precio</th>
+                <th class="cell-xl">Plato</th>
+                <th class="cell-xs">Cantidad</th>
+                <th class="cell-l">Estado</th>
+                <th class="cell-s"></th>
+            </tr>
+        </thead>
+        <tbody id="cocina" style="border-collapse: collapse;">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="py-sm-3 row" style="padding-left: 5vw">
+        <div class="col-sm-9">
+            <h5>Pedidos listos:</h5>
+        </div>
+    </div>
+    <div class="container pb-sm-4">
+      <table class="table table-default table-white border border-3">
+        <thead>
+            <tr>
+                <th class="cell-s tabla_res">ID</th>
+                <th class="cell-xs">Mesa</th>
+                <th class="cell-xs">Precio</th>
+                <th class="cell-xl">Plato</th>
+                <th class="cell-xs">Cantidad</th>
+                <th class="cell-l">Estado</th>
+                <th class="cell-s"></th>
+            </tr>
+        </thead>
+        <tbody id="listos" style="border-collapse: collapse;">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="py-sm-3 row" style="padding-left: 5vw">
+        <div class="col-sm-9">
+            <h5>Pedidos entregados:</h5>
+        </div>
+    </div>
+    <div class="container pb-sm-4">
+      <table class="table table-default table-white border border-3">
+        <thead>
+            <tr>
+                <th class="cell-s">ID</th>
+                <th class="cell-xs">Mesa</th>
+                <th class="cell-xs">Precio</th>
+                <th class="cell-xl">Plato</th>
+                <th class="cell-xs">Cantidad</th>
+                <th class="cell-l">Estado</th>
+                <th class="cell-s"></th>
+            </tr>
+        </thead>
+        <tbody id="entregados" style="border-collapse: collapse;">
+        </tbody>
+      </table>
+    </div>
+</section>
+</br></br>
+<!-- Footer-->
+<footer class="py-sm-4 bg-dark footer">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Pablo M & Alex A 2022</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<script src="js/mod_pedidos.js"></script>
+</body>
+</html>
