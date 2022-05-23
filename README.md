@@ -17,10 +17,28 @@ Para el desarrollo de esta aplicación se hace uso de 5 tablas: tres principales
 - **REST_PLATO** (RESTAURANTE_ID (fk), PLATO_ID (fk)): Finalmente, esta tabla relaciona cada plato con el restaurante que lo ofrece. Se usa esta tabla en vez de implementar a cada plato su RESTAURANTE_ID en la tabla PLATOS debido a que puede haber platos o bebidas que pertenecen a varios restaurantes (por ejemplo, si hubiesen varios locales de la misma cadena de restaurantes en nuestra base de datos).
 
 ## Ventanas cliente
-(menendez? puedo hacerlo tambien parte yo)
+Las ventanas y javascripts relacionados con la parte de administración son **index.html (app.js), mesa, menu, carrito, pago, confirmado, estado** y **pedidos**.
+
+Como se ha comentado anteriormente, estas ventanas han sido diseñadas para versión móvil ya que es como los clientes van a visualizar la aplicación. La pantalla inicial será la de **index.html**.
+
+![index.html](/img/index1.png)
+![index.html](/img/index2.png)
+
+En esta ventana, aparecen todos los restaurantes extraidos de la api **api/restaurants**. En la pantalla, el cliente selecciona el restaurante en el que está pidiendo y esto le redirecciona a la página de **mesa.html**.
+
+![mesa.html](/img/mesa.png)
+
+En esta ventana, el cliente simplemente selecciona la mesa en la que está sentado para que le lleven el pedido. En el caso en el que ya haya un pedido en proceso para esa mesa, se le mandará a la página **pedidos.html**. Si no tiene ningún pedido asociado a su mesa, se mandará a **menu.html** para que comience el pedido.
+
+![pedidos.html](/img/pedidos.png)
+
+En esta ventana se muestran los pedidos en curso asociados a una mesa. Para cada pedido puedes ver todos los datos del pedido y además un botón que te redirecciona para ver el estado de tu pedido en **estado.html**. Si quieres realizar otro pedido aunque ya tengas uno, es posible. Simplemente en el botón de "Hacer otro pedido", y llegarás a la página de **menu.html**
+
+
+
 ## Ventanas admin
 
-Las ventanas y javascripts relacionados con la parte de administración son **admin, admin_acciones, admin_menu, add_plato, mod_plato** y **mod_pedido**.
+Las ventanas y javascripts relacionados con la parte del cliente son **admin, admin_acciones, admin_menu, add_plato, mod_plato** y **mod_pedido**.
 La pantalla inicial del flujo de acceso de administrador es **admin.html**, pero al intentar acceder a cualquiera de las páginas mencionadas por primera vez el sistema requerirá un usuario y contraseña. El usuario y contraseña que hemos determinado son ambos "**admin**", pero esta parte se explicará más adecuadamente en la sección de seguridad. Una vez completado el login, la primera pantalla que verá el administrador es la siguiente:
 
 ![admin.html](/img/admin.png)
@@ -56,3 +74,5 @@ Como nota final, todas las páginas tienen un botón **Volver** para navegar ent
 (menendez)
 ## Dependencias
 (no se)
+
+## APIs
