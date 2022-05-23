@@ -51,6 +51,22 @@ Para el desarrollo de esta aplicación se hace uso de 5 tablas: tres principales
 
 - *api/pedido/{id}* (delete): Elimina un pedido de una tabla.
 
+### APIs Platos
+
+- *api/platos/{id}*: Obtiene todos los platos de un restaurante, en función de su id de restaurante.
+
+- *api/platos/delete/{id}*: Elimina un plato en función del id de plato.
+
+- *api/platos/update/{id}*: Actualiza los valores de un plato en función de su id de plato.
+
+- *api/platos/add*: Añade un plato a la tabla de platos y, además, añade una fila con el plato y el restaurante a la tabla rest-plato
+
+### APIs Restaurantes
+
+- *api/restaurants*: Obtiene todos los restaurantes
+
+- *api/restaurants/{id}*: Obtiene un restaurante en función de su id.
+
 ## Ventanas cliente
 Las ventanas y javascripts relacionados con la parte de administración son **index.html (app.js), mesa, menu, carrito, pago, confirmado, estado** y **pedidos**.
 
@@ -81,7 +97,36 @@ En esta ventana se muestran los pedidos en curso asociados a una mesa. Para cada
 ![menu.html](/img/menu2.png)
 ![menu.html](/img/menu3.png)
 
+En esta ventana, el cliente ve todos los platos. Inicialmente, al empezar el pedido, el carrito de arriba a la derecha aparece en 0 porque no hay platos añadidos y todos los platos en 1. Si quisieras añadir un plato para pedir, simplemente seleccionas la cantidad con los botones de más o menos y le das a añadir. Al pulsar añadir, el carrito se actualizará con el número de platos elegidos. 
 
+Si se pulsa en el carrito, se pasará a la página **carrito.html**.
+
+### Carrito
+
+![menu.html](/img/carrito1.png)
+![menu.html](/img/carrito2.png)
+
+Como se puede observar, en esta ventana aparecen todos los platos pedidos. Puedes eliminar los platos o volver atrás y seguir pidiendo. Cuando hayas terminado de revisar el pedido, se pulsa el botón de confirmar y te redirecciona a la pasarela de **pago.html**
+
+### Pago
+
+![pago.html](/img/pago.png)
+
+Para realizar el pago, el cliente debe insertar los datos de su tarjeta VISA. Si la tarjeta no es VISA (empiece en 4 y tenga o 13 o 16 dígitos), no le permitirá realizar el pago. Si está caducada o la fecha no está en el formato válido, saltará una alerta. Si el código de seguridad no es válido, saltará una alerta. 
+
+No hemos implementado una pasarela de pago real. Al pulsar el botón de pagar, te redirecciona directamente a la pantalla de **confirmado.html**, si todo es correcto.
+
+### Confirmado
+
+![confirmado.html](/img/confirmado.png)
+
+Desde esta ventana, puedes volver a la ventana principal (**index.html**) o ver el estado de tu pedido (**estado.html**)
+
+### Estado
+
+![estado.html](/img/estado.png)
+
+En esta ventana aparecerá el estado del pedido seleccionado. Desde ella podrá o bien volver a **index.html** o hacer otro pedido que le llevará a **mesa.html**.
 
 ## Ventanas admin
 
