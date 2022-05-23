@@ -1,6 +1,9 @@
 # Desarrollo de una aplicación para pedir desde la mesa de un restaurante-EasyOrder
 ## Proyecto final de la asignatura de Programación de Aplicaciones Telemáticas
 
+## Autores
+Alejandro Alzaga y Pablo Menéndez
+
 ## Link a Gitpod
 [![](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Menendez6/PAT_final)
 
