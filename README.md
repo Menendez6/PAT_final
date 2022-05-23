@@ -128,6 +128,7 @@ Desde esta ventana, puedes volver a la ventana principal (**index.html**) o ver 
 
 En esta ventana aparecerá el estado del pedido seleccionado. Desde ella podrá o bien volver a **index.html** o hacer otro pedido que le llevará a **mesa.html**.
 
+
 ## Ventanas admin
 
 Las ventanas y javascripts relacionados con la parte del cliente son **admin, admin_acciones, admin_menu, add_plato, mod_plato** y **mod_pedido**.
@@ -161,8 +162,22 @@ Una vez actualizados los datos, al pulsar "Volver" volveremos a la página de ad
 Como nota final, todas las páginas tienen un botón **Volver** para navegar entre las distintas opciones. La ventana admin_acciones.html es la única que no la tiene, porque se tiene en cuenta que, una vez se haya marcado tu restaurante, ese sería el único que se administra.
 
 ## Seguridad
-(menendez)
+
+La parte de la aplicación que va dedicada al cliente, no tiene aspectos de seguridad, ya que está pesada para ser de libre acceso. No hace falta hacer login como usuario porque buscamos un acceso de manera cómoda para el cliente.
+
+La parte de la aplicación del administrador debe tener seguridad. Para ello hemos utilizado la seguridad de springboot. Denegamos el acceso a las páginas de administrador si no está autenticado. Para el resto de páginas no hay restricciones.
+
+![login.html](/img/seguridad.png)
+
 ## Testing
-(menendez)
+
+Para comprobar que nuestra aplicación funciona correctamente, hemos realizado una serie de tests E2E.
+
+Hemos comprobado el funcionamiento de todas las APIs que se ven en el apartado de APIs. Hemos comprobado que, en el caso de los gets, la información obtenida es la correcta y en el caso de los posts o deletes, las tablas se actualizaban correctamente.
+
+![login.html](/img/tests.png)
+
 ## Dependencias
-(no se)
+
+Para este proyecto hemos utilizado las siguientes dependencias de SpringBoot:
+- 
