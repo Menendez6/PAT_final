@@ -31,7 +31,25 @@ Para el desarrollo de esta aplicación se hace uso de 5 tablas: tres principales
 ## APIs
 
 ### APIs Pedidos
-- 
+- *api/add_pedido*: Api para añadir un nuevo elemento a la tabla de pedidos. El nuevo elemento se añadirá con el siguiente id de pedido, la mesa y el restaurante donde se haya pedido, el precio correspondiente al pedido y el estado 1 (confirmado).
+
+- *api/getId*: Obtiene el id del último pedido añadido. Al crear un pedido, necesitamos conocer el id del pedido que se acaba de realizad, por lo que utilizamos esta API
+
+- *api/addPlatoPedido*: Añadir un elemento a la tabla plato-pedidos que guarda la info de los platos correspondientes a un pedido.
+
+- *api/getPlatosPedidos*: Obtener toda la tabla de plato-pedido para comprobar que se guarda bien
+
+- *api/getPedido/{id}*: Obtener un pedido por su id. Se obtiene únicamente el pedido, no los platos asociados a él.
+
+- *api/getPedido2/{id}*: Obtener un pedido por su id. En esta ocasión sí se obtienen los platos asociados al pedido.
+
+- *api/getPedidoMesa/{id}/{mesa}*: Obtener todos los pedidos de una mesa específica de un restaurante. Una mesa puede tener varios pedidos
+
+- *api/getPedidos/restaurante/{id}*: Obtiene todos los pedidos de un restaurante con sus platos.
+
+- *api/pedido/update/{id}*: Actualiza el estado de un pedido.
+
+- *api/pedido/{id}* (delete): Elimina un pedido de una tabla.
 
 ## Ventanas cliente
 Las ventanas y javascripts relacionados con la parte de administración son **index.html (app.js), mesa, menu, carrito, pago, confirmado, estado** y **pedidos**.
