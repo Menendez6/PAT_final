@@ -1,6 +1,7 @@
 tabla = document.getElementById('data_res');
 
 async function mostrarRestaurantes(){
+    localStorage.clear();
     fetch("/api/restaurants")
     .then(response => response.json())
     .then(data => {

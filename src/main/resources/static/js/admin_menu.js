@@ -2,6 +2,7 @@ let plato = 0;
 tabla = document.getElementById('data_platos');
 
 function mostrarPlatos() {
+    limpiarStoragePlato(); //limpiamos cada vez que abrimos esta pagina
     url = "/api/platos/"+localStorage.getItem('restaurante_admin');
     fetch(url)
     .then(response => response.json())
@@ -100,6 +101,14 @@ function mostrarPlatos() {
     })
 }
 
+function limpiarStoragePlato(){
+    localStorage.removeItem('id_plato');
+    localStorage.removeItem('nombre_plato');
+    localStorage.removeItem('foto_plato');
+    localStorage.removeItem('desc_plato');
+    localStorage.removeItem('seccion_plato');
+    localStorage.removeItem('precio_plato');
+}
 
 async function borrarPlato(){
     let request = await fetch("/api/platos/delete/"+plato,{
