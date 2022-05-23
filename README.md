@@ -178,9 +178,20 @@ Para comprobar que nuestra aplicación funciona correctamente, hemos realizado u
 
 Hemos comprobado el funcionamiento de todas las APIs que se ven en el apartado de APIs. Hemos comprobado que, en el caso de los gets, la información obtenida es la correcta y en el caso de los posts o deletes, las tablas se actualizaban correctamente.
 
-![login.html](/img/tests.png)
+![test.html](/img/tests.png)
 
 ## Dependencias
 
 Para este proyecto hemos utilizado las siguientes dependencias de SpringBoot:
-- 
+
+- Spring data jdbc: Permite trabajar con bases de datos relacionales utilizando spring data. 
+
+- H2 Database: Proporciona una base de datos rápida en memoria que permite acceso de JDBC API.
+
+- Lombok: Librería de anotaciones de Java que nos permite una mayor eficiencia en el código evitando repeticiones.
+
+- Validation: Permite hacer tests.
+
+- Spring web: Permite realizar aplicaciones web REST, utilizando Spring MVC.
+
+- Spring security: Framework para el control y autenticación en aplicaciones spring.
