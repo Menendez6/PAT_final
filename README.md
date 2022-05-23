@@ -1,6 +1,18 @@
 # Desarrollo de una aplicación para pedir desde la mesa de un restaurante-EasyOrder
 ## Proyecto final de la asignatura de Programación de Aplicaciones Telemáticas
 
+## Tabla de contenidos
+1. [Introduccion](#breve-explicación-proyecto)
+2. [Datos](#datos)
+3. [APIs](#apis)
+4. [Ventanas cliente](#ventanas-cliente)
+5. [Ventanas admin](#ventanas-admin)
+6. [Seguridad](#seguridad)
+7. [Testing](#testing)
+8. [Dependecias](#dependencias)
+
+## Breve explicación proyecto
+
 En este proyecto hemos desarrollado una aplicación para pedir desde la mesa de un restaurante. Si fueras un cliente en un restaurante, escanearías un QR y este te llevaría a la página index.html, desde donde empieza el flujo de la aplicación que explicaremos más adelante. 
 
 Esta aplicación creemos que facilita dos acciones que todo el mundo realiza al ir a un restaurante como son pedir y pagar. Con esta aplicación, puedes pedir y pagar desde la mesa sin tener que esperar a que un camarero venga a tomarte nota o traerte la cuenta. Además, esta aplicación también hace la vida más fácil a los restaurantes ya que podrán ver pedidos más rápidamente y modificar pedidos y platos desde un terminal muy sencillo de utilzar.
@@ -16,23 +28,40 @@ Para el desarrollo de esta aplicación se hace uso de 5 tablas: tres principales
 - **PEDIDO_PLATO** (PEDIDO_ID (fk), PLATO_ID (fk), NUM_PLATOS): Esta tabla relaciona cada pedido con los platos que lo forman. Para cada pedido se guardarán en esta tabla tantas filas como platos distintos se hayan pedido. Además, se añade el campo num_platos en el caso de que se pidan varias unidades del mismo.
 - **REST_PLATO** (RESTAURANTE_ID (fk), PLATO_ID (fk)): Finalmente, esta tabla relaciona cada plato con el restaurante que lo ofrece. Se usa esta tabla en vez de implementar a cada plato su RESTAURANTE_ID en la tabla PLATOS debido a que puede haber platos o bebidas que pertenecen a varios restaurantes (por ejemplo, si hubiesen varios locales de la misma cadena de restaurantes en nuestra base de datos).
 
+## APIs
+
+### APIs Pedidos
+- 
+
 ## Ventanas cliente
 Las ventanas y javascripts relacionados con la parte de administración son **index.html (app.js), mesa, menu, carrito, pago, confirmado, estado** y **pedidos**.
 
 Como se ha comentado anteriormente, estas ventanas han sido diseñadas para versión móvil ya que es como los clientes van a visualizar la aplicación. La pantalla inicial será la de **index.html**.
 
+### Index
+
 ![index.html](/img/index1.png)
 ![index.html](/img/index2.png)
 
-En esta ventana, aparecen todos los restaurantes extraidos de la api **api/restaurants**. En la pantalla, el cliente selecciona el restaurante en el que está pidiendo y esto le redirecciona a la página de **mesa.html**.
+En esta ventana, aparecen todos los restaurantes extraidos de la api **api/restaurants**. En la pantalla, el cliente selecciona el restaurante en el que está sentado y esto le redirecciona a la página de **mesa.html**.
+
+### Mesa
 
 ![mesa.html](/img/mesa.png)
 
 En esta ventana, el cliente simplemente selecciona la mesa en la que está sentado para que le lleven el pedido. En el caso en el que ya haya un pedido en proceso para esa mesa, se le mandará a la página **pedidos.html**. Si no tiene ningún pedido asociado a su mesa, se mandará a **menu.html** para que comience el pedido.
 
+### Pedidos
+
 ![pedidos.html](/img/pedidos.png)
 
-En esta ventana se muestran los pedidos en curso asociados a una mesa. Para cada pedido puedes ver todos los datos del pedido y además un botón que te redirecciona para ver el estado de tu pedido en **estado.html**. Si quieres realizar otro pedido aunque ya tengas uno, es posible. Simplemente en el botón de "Hacer otro pedido", y llegarás a la página de **menu.html**
+En esta ventana se muestran los pedidos en curso asociados a una mesa. Para cada pedido puedes ver todos los datos del pedido y además un botón que te redirecciona para ver el estado de tu pedido en **estado.html**. Si quieres realizar otro pedido aunque ya tengas uno, es posible. Simplemente en el botón de "Hacer otro pedido", y llegarás a la página de **menu.html**.
+
+### Menu
+
+![menu.html](/img/menu1.png)
+![menu.html](/img/menu2.png)
+![menu.html](/img/menu3.png)
 
 
 
@@ -74,5 +103,3 @@ Como nota final, todas las páginas tienen un botón **Volver** para navegar ent
 (menendez)
 ## Dependencias
 (no se)
-
-## APIs
