@@ -39,7 +39,7 @@ public class PedidoServiceTest {
         IdDTO id = pedidoService.getId();
         
 
-        then(id.id()).isEqualTo(9L);
+        then(id.id()).isEqualTo(8L);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class PedidoServiceTest {
         PedidoDTO pedido = new PedidoDTO(30L, new BigDecimal(20), 1L);
         pedidoService.crearPedido(pedido);
 
-        then(pedidoRepository.count()).isEqualTo(8);
+        then(pedidoRepository.count()).isEqualTo(7);
     }
 
     @Test 
@@ -55,7 +55,7 @@ public class PedidoServiceTest {
         PlatoPedidoDTO plato = new PlatoPedidoDTO(1L, 1001L, 4L);
         pedidoService.addPlatoPedido(plato);
 
-        then(pedidoPlatoRepository.count()).isEqualTo(20);
+        then(pedidoPlatoRepository.count()).isEqualTo(19L);
     }
 
     @Test
@@ -69,21 +69,21 @@ public class PedidoServiceTest {
 
         PedidoDTO2 pedido = pedidoService.getPedidoById(1L);
 
-        then(pedido).isEqualTo(new PedidoDTO2(1L, 25L,new BigDecimal(29) , 3L, 1L));
+        then(pedido).isEqualTo(new PedidoDTO2(1L, 25L,new BigDecimal(29) , 2L, 1L));
     }
 
     @Test void given_service_when_call_getPedidoById2_then_Ok(){
 
         List<PedidoPlato> pedidos = pedidoService.getPedidoById2(1L);
 
-        then(pedidos.get(0)).isEqualTo(new PedidoPlato("Patatas Bravas", 1L, 1L, 25L,new BigDecimal(29), 3L));
+        then(pedidos.get(0)).isEqualTo(new PedidoPlato("Patatas Bravas", 1L, 1L, 25L,new BigDecimal(29), 2L));
     }
 
     @Test void given_service_when_call_getPedidoByMesa_then_Ok(){
 
         List<PedidoDTO2> pedidos = pedidoService.getPedidoByMesa(25L,1L);
 
-        then(pedidos.get(0)).isEqualTo(new PedidoDTO2(1L, 25L, new BigDecimal(29), 3L, 1L));
+        then(pedidos.get(0)).isEqualTo(new PedidoDTO2(1L, 25L, new BigDecimal(29), 2L, 1L));
     }
 
     
