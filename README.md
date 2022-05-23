@@ -22,17 +22,29 @@ Para el desarrollo de esta aplicación se hace uso de 5 tablas: tres principales
 
 Las ventanas y javascripts relacionados con la parte de administración son **admin, admin_acciones, admin_menu, add_plato, mod_plato** y **mod_pedido**.
 La pantalla inicial del flujo de acceso de administrador es **admin.html**, pero al intentar acceder a cualquiera de las páginas mencionadas por primera vez el sistema requerirá un usuario y contraseña. El usuario y contraseña que hemos determinado son ambos "**admin**", pero esta parte se explicará más adecuadamente en la sección de seguridad. Una vez completado el login, la primera pantalla que verá el administrador es la siguiente:
-![admin.html](enlace de imagen admin.html)
+
+![admin.html](/img/admin.png)
+
 En esta página se verán los restaurantes disponibles, y el administrador eligirá el suyo, el que desea gestionar. Una vez elegido, se almacena el id del restaurante elegido de manera local y se muestra la siguiente pantalla:
-![admin_acciones.html](enlace de imagen admin_acciones.html)
+
+![admin_acciones.html](/img/admin_acciones.png)
+
 Esta página presenta las opciones: revisar pedidos y modificar el menú. La primera opción es la gestión de pedidos:
-![mod_pedidos.html](enlace de imagen mod_pedidos.html)
-En esta ventana se muestran, divididos según su estado, los pedidos del restaurante al que se ha accedido. Para cada pedido se pueden ver su ID, la mesa que lo solicitó, el precio total y los platos y bebidas que componen el pedido. Para cada pedido, el administrador tiene disponible un desplegable para cambiar el estado del pedido. Al pulsar **Modificar**, la página se refresca y se mueve el pedido al estado elegido. Cuando un pedido ha sido entregado (estado final), la opción de modificar se sustituye por la de **Eliminar**, lo cual permite eliminar el pedido una vez ha sido entregado para no llenar la página y la base de datos de pedidos ya entregados.
-![mod_pedidos.html: opcion entregado](enlace de imagen mod_pedidos.html opcion entregado)
+
+![mod_pedidos.html](/img/mod_pedidos.png)
+
+En esta ventana se muestran, divididos según su estado, los pedidos del restaurante al que se ha accedido. Para cada pedido se pueden ver su ID, la mesa que lo solicitó, el precio total y los platos y bebidas que componen el pedido. Para cada pedido, el administrador tiene disponible un desplegable para cambiar el estado del pedido. Al pulsar **Cambiar**, la página se refresca y se mueve el pedido al estado elegido. Cuando un pedido ha sido entregado (estado final), la opción de modificar se sustituye por la de **Eliminar**, lo cual permite eliminar el pedido una vez ha sido entregado para no llenar la página y la base de datos de pedidos ya entregados.
+
+![mod_pedidos.html: opcion entregado](/img/mod_pedidos_entregados.png)
+
 La segunda opción es la de modificar el menú:
-![admin_menu.html](enlace de imagen admin_menu.html)
+
+![admin_menu.html](/img/admin_menu.png)
+
 En esta página se muestran todos los platos y bebidas disponible en el restaurante, con toda la información sobre los mismos, y ordenados según la sección a la que pertenecen. Cada plato presenta la opción de **Modificar** y de **Eliminar**. Eliminar el plato lo borra de la base de datos y refresca la página para mostrar el cambio. Si se elige modificar el plato, la página que se nos presenta es la siguiente:
-![mod_plato.html](enlace de imagen mod_plato.html)
+
+![mod_plato.html](/img/mod_platos.png)
+
 Esta página sigue el formato de un formulario, donde se pueden cambiar todos los campos menos el ID del plato, y actualizarlos en la base de datos. El formulario tiene comprobación de que el campo se ha rellenado para el precio y el nombre (la sección siempre tendrá una opción elegida así que no es necesario implantarlo), y además el campo de precio tiene una comprobación de formato correcto. 
 Una vez actualizados los datos, al pulsar "Volver" volveremos a la página de administración de platos. En esta página tenemos también la opción de añadir platos. La ventana **add_plato.html** es igual a la de modificar, con la diferencia de que todos los campos están vacíos, y que no hay campo de ID, ya que éste se asigna según los ya existentes para evitar repetidos. Las mismas comprobaciones de formulario de **mod_plato.html** existen en **add_plato.html**
 
